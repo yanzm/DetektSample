@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
             return ""
         }
 
+        // TODO:
+
         return list[2]
     }
 }
