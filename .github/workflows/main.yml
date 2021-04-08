@@ -16,4 +16,5 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: detekt
-        run: ./gradlew detekt
+        uses: natiginfo/action-detekt-all@1.16.0-RC1
+         #         run: ./gradlew detekt
