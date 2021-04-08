@@ -13,15 +13,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun find3rd(list: List<String>): String {
-        if (list.isEmpty()) {
+        if (            list.isEmpty()) {
             return ""
         }
 
         if (list.size < THIRD_INDEX) {
             return ""
         }
-
-        // TODO:
 
         return list[2]
     }
