@@ -1,0 +1,1 @@
+ForbiddenComment - [find3rd] at /Users/yanzm/Projects/DetektSample/app/src/main/java/net/yanzm/detektsample/MainActivity.kt:24:9 - Signature=MainActivity.kt$MainActivity$// TODO:

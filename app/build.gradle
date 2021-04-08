@@ -1,0 +1,70 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "io.gitlab.arturbosch.detekt" version "1.16.0"
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "net.yanzm.detektsample"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+detekt {
+    buildUponDefaultConfig = true
+
+    // https://detekt.github.io/detekt/configurations.html
+    // デフォルトのルールは → https://github.com/detekt/detekt/blob/main/detekt-core/src/main/resources/default-detekt-config.yml
+    config = files("$projectDir/detekt/detekt.yml")
+
+    reports {
+        html {
+            enabled = true
+            destination = file("$projectDir/detekt/reports/detekt.html")
+        }
+        xml {
+            enabled = true
+            destination = file("$projectDir/detekt/reports/detekt.xml")
+        }
+        txt {
+            enabled = true
+            destination = file("$projectDir/detekt/reports/detekt.txt")
+        }
+    }
+}
+
+dependencies {
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0")
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:1.3.2"
+    implementation "androidx.appcompat:appcompat:1.2.0"
+    implementation "com.google.android.material:material:1.3.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
+    testImplementation "junit:junit:4.+"
+    androidTestImplementation "androidx.test.ext:junit:1.1.2"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
+}
